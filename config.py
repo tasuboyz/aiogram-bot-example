@@ -13,7 +13,5 @@ use_local_api = False  # Imposta su False se l'API non � in locale
 
 log_level = logging.INFO  # Livello di logging desiderato
 
-anime_domain = "http://gogoanime3.net"
-
 
 
