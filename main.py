@@ -2,7 +2,7 @@ from aiogram.dispatcher.dispatcher import loggers
 from bot import BOT
 from aiogram.client.telegram import TelegramAPIServer
 from aiogram.client.session.aiohttp import AiohttpSession
-import logging
+from logger_config import logger
 
 import asyncio
 import logger_config
@@ -24,7 +24,6 @@ async def main():
     except KeyboardInterrupt:
         print("Interrotto dall'utente")
     finally:
-        # await my_bot.dp.stop_polling()
         await on_stop()
         
 if __name__ == '__main__':   
