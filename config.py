@@ -1,7 +1,7 @@
 import logging
 
-TOKEN = "6260189061:AAGfrCYpQMhBrwVV5riAyH8ESYV5Q0fz4Kw" #token di prova
-#TOKEN = '6313740718:AAFqkXeHQdtmBvKLm4ED3PT_84aARtx61h0' #token produzione
+TOKEN = "TOKEN" #token di prova
+#TOKEN = 'TOKEN' #token produzione
 
 admin_id = 1026795763
 
