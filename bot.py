@@ -20,8 +20,6 @@ class BOT():
         self.dp = Dispatcher()
         self.bot = instance.bot
         
-        self.url = "https://www.survio.com/survey/d/F4K4J8C8D2F9D7L8O"
-        
         #command
         self.dp.message(CommandStart())(self.command_start_handler)    
 
