@@ -1,4 +1,3 @@
-from aiogram.utils.markdown import hbold
 from aiogram import types
 
 class UserInfo:
