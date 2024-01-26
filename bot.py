@@ -14,6 +14,7 @@ import shutil
 import os
 import re
 import time
+from logger_config import logger
 
 class BOT():
     def __init__(self):
@@ -26,8 +27,8 @@ class BOT():
     async def command_start_handler(self, message: Message):
         info = UserInfo(message)
         chat_id = info.chat_id
-        await message.answer("bot started")
-
-
-
+        try:
+            await message.answer("bot started")
+        except Exception as ex:
+            logger.error(ex)
 
