@@ -8,7 +8,7 @@ async def on_start():
     print(f"{art}")
 
 async def on_stop():
-    print("Bot fermato")
+    print("Bot stoped")
 
 async def main():
     try:       
