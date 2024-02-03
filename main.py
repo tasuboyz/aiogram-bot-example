@@ -2,9 +2,10 @@ from bot import BOT
 
 import asyncio
 from logger_config import logger
+from ascii import art
 
 async def on_start():
-    print("Bot avviato")
+    print(f"{art}")
 
 async def on_stop():
     print("Bot fermato")
