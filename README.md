@@ -1,6 +1,13 @@
 # aiogram-bot-example
 Example of bot telegram in aiogram
 
+## Prerequisites.
+
+  - Make sure you have aiogram dependencies installed by running the following command:
+    ```bash
+    pip install aiogram
+    ```
+    
 ## How to Get Started
 
 Follow these steps to get started with the project:
