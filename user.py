@@ -6,12 +6,13 @@ class UserInfo:
             user = data.from_user
             self.chat_id = data.chat.id
             self.message_id = data.message_id
-            self.user_data = data.text
+            self.text= data.text
         elif isinstance(data, types.CallbackQuery):
             user = data.from_user
             self.chat_id = data.message.chat.id
             self.message_id = data.message.message_id
             self.user_data = data.data
+            self.text= data.message.text
         else:
             return None
 
