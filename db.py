@@ -5,7 +5,7 @@ from datetime import datetime
 class Database():
     def __init__(self):
         self.conn = sqlite3.connect('database.db')
-
+        self.c = self.conn.cursor()      
         #table
         self.USER_INFO = 'USER_INFO'
 
