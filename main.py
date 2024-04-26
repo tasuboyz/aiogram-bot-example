@@ -6,6 +6,7 @@ from ascii import art
 
 async def on_start():
     print(f"{art}")
+    Database().create_table()
 
 async def on_stop():
     print("Bot stoped")
