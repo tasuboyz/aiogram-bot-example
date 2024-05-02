@@ -3,6 +3,7 @@ from bot import BOT
 import asyncio
 from logger_config import logger
 from ascii import art
+from db import Database
 
 async def on_start():
     print(f"{art}")
