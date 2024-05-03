@@ -10,6 +10,8 @@ class Keyboard_Manager:
     def create_start_inline_keyboard(self, message=None):
         keyboard = []
         text = "Open Link"
+        keyboard.append([InlineKeyboardButton(text="View Users", callback_data="users")])
+        #keyboard.append([InlineKeyboardButton(text="", web_app=WebAppInfo(url=self.example_url))])
         keyboard.append([InlineKeyboardButton(text=text, web_app=WebAppInfo(url=self.example_url))])
         keyboard.append([InlineKeyboardButton(text=text, url=self.example_url)])
 
