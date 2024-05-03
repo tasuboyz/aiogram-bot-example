@@ -3,7 +3,7 @@ import logging
 TOKEN = "TOKEN" #token of test
 #TOKEN = 'TOKEN' #token produzione
 
-admin_id = 1026795763
+admin_id = 1234 #your user_id
 
 api_base_url = 'http://localhost:8081'  
 
