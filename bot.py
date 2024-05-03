@@ -29,6 +29,7 @@ class BOT():
         #command
         self.dp.message(CommandStart())(self.command_start_handler)   
         self.dp.callback_query(F.data == "users")(self.process_callback_view_users) 
+        self.dp.callback_query(F.data == "clean")(self.clean_inactive_users) 
 
     async def command_start_handler(self, message: Message):
         info = UserInfo(message)
@@ -65,3 +66,26 @@ class BOT():
                 # status = info.get_vip_member(result[0])
                 # if status != 'member':
                 file.write(str(result[0]) + '\n')
+
+    async def clean_inactive_users(self, callback_query: CallbackQuery):       
+        count = 0
+        id_to_delate = []
+        try:
+            counter = await callback_query.message.answer(f"{count}")
+            async for user_id in self.db.users_ids():
+                try:
+                    await self.bot.send_chat_action(user_id[0], "typing")
+
+                    #logger.error(f"{user_id[0]} Sended! {count}")
+                    
+                    count += 1
+                    await self.bot.edit_message_text(chat_id=self.admin_id, text=f"{count}", message_id=counter.message_id)
+                except Exception as e:     
+                    logger.error(f"{e}")         
+                    #logger.error(f"{user_id[0]}, delated \n{e}") 
+                    id_to_delate.append(user_id[0])
+        finally:
+            for ids in id_to_delate:
+                self.db.delate_ids(ids)      
+                await self.bot.send_message(self.admin_id, "Completed!")
+                #logger.error(f"Completed!")        

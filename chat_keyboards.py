@@ -11,7 +11,7 @@ class Keyboard_Manager:
         keyboard = []
         text = "Open Link"
         keyboard.append([InlineKeyboardButton(text="View Users", callback_data="users")])
-        #keyboard.append([InlineKeyboardButton(text="", web_app=WebAppInfo(url=self.example_url))])
+        keyboard.append([InlineKeyboardButton(text="Clean Users", callback_data="clean")])
         keyboard.append([InlineKeyboardButton(text=text, web_app=WebAppInfo(url=self.example_url))])
         keyboard.append([InlineKeyboardButton(text=text, url=self.example_url)])
 

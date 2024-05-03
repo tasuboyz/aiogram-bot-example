@@ -57,3 +57,20 @@ class Database():
             count = self.c.rowcount
             self.conn.commit()
             return f"{count} record(s) deleted"
+    
+    async def users_ids(self):
+        self.c.execute(f"CREATE TEMPORARY TABLE temp_user_info AS SELECT * FROM {self.USER_INFO}")
+
+        self.c.execute(f"SELECT {self.user_id} FROM temp_user_info")
+        while True:
+            user_id = self.c.fetchone()
+            if user_id is None:
+                break
+            yield user_id
+
+        self.c.execute("DROP TABLE temp_user_info")
+
+    def delate_ids(self, user_id):
+        self.c.execute(f"DELETE FROM {self.USER_INFO} WHERE {self.user_id} = ?", (user_id,)) 
+        self.conn.commit()
+        return f"Deleted"
