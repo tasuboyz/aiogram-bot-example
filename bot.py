@@ -17,6 +17,7 @@ import time
 from logger_config import logger
 from chat_keyboards import Keyboard_Manager
 from db import Database
+from admin_panel import Admin_Commands
 
 class BOT():
     def __init__(self):
