@@ -11,12 +11,16 @@ class Keyboard_Manager:
         keyboard = []
         text = "Open Link"
         keyboard.append([InlineKeyboardButton(text="View Users", callback_data="users")])
+        keyboard.append([InlineKeyboardButton(text="Send Ads", callback_data="ads")])
         keyboard.append([InlineKeyboardButton(text="Clean Users", callback_data="clean")])
         keyboard.append([InlineKeyboardButton(text=text, web_app=WebAppInfo(url=self.example_url))])
         keyboard.append([InlineKeyboardButton(text=text, url=self.example_url)])
 
         keyboard = InlineKeyboardMarkup(inline_keyboard=keyboard)
         return keyboard
+    
+    def admin_keyboards(self):
+        return
     
     def create_start_reply_keyboard(self, message=None):
         keyboard = []

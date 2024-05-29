@@ -7,6 +7,8 @@ from user import UserInfo
 from logger_config import logger
 import instance
 import config
+from aiogram.fsm.context import FSMContext
+from memory import Form
 
 class Admin_Commands:
     def __init__(self):
@@ -62,3 +64,52 @@ class Admin_Commands:
                 self.db.delate_ids(ids)      
                 await self.bot.send_message(self.admin_id, "Completed!")
                 #logger.error(f"Completed!")        
+
+    async def wait_document(self, callback_query: CallbackQuery, state: FSMContext):
+        await callback_query.message.answer("Send file txt:")
+        await state.set_state(Form.set_repair)
+
+    async def repair_user_id(self, message: Message, state: FSMContext):
+        await state.clear()
+        try:
+            _, file_path = await self.image.recive_image(message, False)
+            self.db.insert_all_users(file_path)
+            await message.reply("Repair succesful!")
+        except Exception as ex:
+            logger.error(f"Errore durante l'esecuzione di handle_set_state: {ex}", exc_info=True)
+            await self.bot.send_message(self.admin_id, f"{ex}")
+    
+    async def recive_ads(self, callback_query: CallbackQuery, state: FSMContext):
+        info = UserInfo(callback_query)
+        chat_id = info.chat_id
+        await state.set_state(Form.set_ads)  
+        await self.bot.send_message(self.admin_id, "Ads:")
+    
+    async def send_ads(self, message: Message, state: FSMContext):
+        info = UserInfo(message)
+        ads = message.text
+        await state.clear()
+        count = 0
+        #id_da_escludere = self.estrai_id("send file.txt")
+        id_to_delate = []
+        try:
+            counter = await message.answer(f"{count}")
+            async for user_id in Database().users_ids():
+                #if user_id[0] in id_da_escludere:
+                #    continue
+                #if count == 5111:
+                #    logger.error(f"Completed!")
+                #    break
+                try:
+                    await message.send_copy(user_id[0])
+                    #logger.error(f"{user_id[0]} Sended! {count}")
+                    count += 1
+                    await asyncio.sleep(0.2)
+                    await self.bot.edit_message_text(chat_id=self.admin_id, text=f"{count}", message_id=counter.message_id)
+                except Exception as e:             
+                    logger.error(f"{user_id[0]}, delated \n{e}") 
+                    id_to_delate.append(user_id[0])
+        finally:
+            for ids in id_to_delate:
+                Database().delate_ids(ids)      
+                logger.error(f"Completed!")        

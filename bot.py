@@ -18,6 +18,7 @@ from logger_config import logger
 from chat_keyboards import Keyboard_Manager
 from db import Database
 from admin_panel import Admin_Commands
+from memory import Form
 
 class BOT():
     def __init__(self):
@@ -32,6 +33,8 @@ class BOT():
         self.dp.message(CommandStart())(self.command_start_handler)   
         self.dp.callback_query(F.data == "users")(self.admin_command.process_callback_view_users) 
         self.dp.callback_query(F.data == "clean")(self.admin_command.clean_inactive_users) 
+        self.dp.callback_query(lambda c: c.data == 'ads')(self.admin_command.recive_ads)
+        self.dp.message(Form.set_ads)(self.admin_command.send_ads)
 
     async def command_start_handler(self, message: Message):
         info = UserInfo(message)
