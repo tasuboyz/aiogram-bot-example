@@ -26,11 +26,12 @@ class BOT():
         self.keyboards = Keyboard_Manager()
         self.db = Database()
         self.admin_id = config.admin_id
+        self.admin_command = Admin_Commands()
         
         #command
         self.dp.message(CommandStart())(self.command_start_handler)   
-        self.dp.callback_query(F.data == "users")(self.process_callback_view_users) 
-        self.dp.callback_query(F.data == "clean")(self.clean_inactive_users) 
+        self.dp.callback_query(F.data == "users")(self.admin_command.process_callback_view_users) 
+        self.dp.callback_query(F.data == "clean")(self.admin_command.clean_inactive_users) 
 
     async def command_start_handler(self, message: Message):
         info = UserInfo(message)
