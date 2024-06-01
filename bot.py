@@ -5,7 +5,7 @@ from aiogram.types.web_app_info import WebAppInfo
 
 from aiogram import F, Bot, Dispatcher, Router, types
 from aiogram.fsm.context import FSMContext
-from aiogram.filters import CommandStart
+from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, CallbackQuery
 from user import UserInfo
 import instance
@@ -19,6 +19,7 @@ from chat_keyboards import Keyboard_Manager
 from db import Database
 from admin_panel import Admin_Commands
 from memory import Form
+import steem_request
 
 class BOT():
     def __init__(self):
@@ -31,6 +32,7 @@ class BOT():
         
         #command
         self.dp.message(CommandStart())(self.command_start_handler)   
+        self.dp.message(Command('user'))(self.admin_command.admin_panel_commands)  
         self.dp.callback_query(F.data == "users")(self.admin_command.process_callback_view_users) 
         self.dp.callback_query(F.data == "clean")(self.admin_command.clean_inactive_users) 
         self.dp.callback_query(lambda c: c.data == 'ads')(self.admin_command.recive_ads)

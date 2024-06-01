@@ -18,6 +18,11 @@ class Admin_Commands:
         self.bot = instance.bot
         self.admin_id = config.admin_id
 
+    async def admin_panel_commands(self, message: Message):
+        keyboard = self.keyboards.admin_keyboards()
+        await message.answer("choose commands:", reply_markup=keyboard)
+        return
+
     async def process_callback_view_users(self, callback_query: CallbackQuery):
         info = UserInfo(callback_query)
         chat_id = info.chat_id
