@@ -19,7 +19,6 @@ from chat_keyboards import Keyboard_Manager
 from db import Database
 from admin_panel import Admin_Commands
 from memory import Form
-import steem_request
 
 class BOT():
     def __init__(self):
