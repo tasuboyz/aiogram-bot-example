@@ -12,7 +12,7 @@ from memory import Form
 
 class Admin_Commands:
     def __init__(self):
-        self.example_url = 'https://github.com/tasuboyz/aiogram-bot-example'
+        self.example_url = 'https://github.com/tasuboyz/aiogram-bot-example' 
         self.db = Database()
         self.keyboards = Keyboard_Manager()
         self.bot = instance.bot
