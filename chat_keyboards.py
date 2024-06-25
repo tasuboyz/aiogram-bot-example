@@ -31,5 +31,5 @@ class Keyboard_Manager:
         text = "Open Link"
         keyboard.append([KeyboardButton(text=text, web_app=WebAppInfo(url=self.example_url))])
 
-        keyboard = ReplyKeyboardMarkup(inline_keyboard=keyboard)
+        keyboard = ReplyKeyboardMarkup(keyboard=keyboard)
         return keyboard
