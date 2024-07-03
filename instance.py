@@ -13,6 +13,6 @@ if config.use_local_api:
     session = AiohttpSession(
             api=TelegramAPIServer.from_base(config.api_base_url)
     )
-    bot = Bot(token=bot_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+    bot = Bot(token=bot_token, session=session, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 else:
     bot = Bot(token=bot_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
