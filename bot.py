@@ -45,6 +45,6 @@ class BOT():
         try:
             self.db.insert_user_data(user_id=user_id, username=username)
             keyboard = self.keyboards.create_start_inline_keyboard()
-            await message.answer(<code>"bot started"</code>, reply_markup=keyboard)
+            await message.answer("<code>bot started</code>", reply_markup=keyboard)
         except Exception as ex:
             logger.error(ex)
