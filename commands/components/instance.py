@@ -1,4 +1,4 @@
-import config
+from . import config
 from aiogram.client.telegram import TelegramAPIServer
 from aiogram.client.session.aiohttp import AiohttpSession
 from aiogram import Bot
