@@ -1,9 +1,9 @@
 from bot import BOT
 
 import asyncio
-from logger_config import logger
-from ascii import art
-from db import Database
+from commands.components.logger_config import logger
+from commands.components.ascii import art
+from commands.components.db import Database
 
 async def on_start():
     print(f"{art}")
