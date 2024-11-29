@@ -1,4 +1,4 @@
-import config
+from commands.components import config
 
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 from aiogram.types.web_app_info import WebAppInfo
@@ -7,18 +7,18 @@ from aiogram import F, Bot, Dispatcher, Router, types
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, CallbackQuery
-from user import UserInfo
-import instance
+from commands.components.user import UserInfo
+from commands.components import instance
 import uuid
 import shutil
 import os
 import re
 import time
-from logger_config import logger
-from chat_keyboards import Keyboard_Manager
-from db import Database
-from admin_panel import Admin_Commands
-from memory import Form
+from commands.components.logger_config import logger
+from commands.components.chat_keyboards import Keyboard_Manager
+from commands.components.db import Database
+from commands.admin_panel import Admin_Commands
+from commands.components.memory import Form
 
 class BOT():
     def __init__(self):
