@@ -5,11 +5,14 @@ from commands.components.logger_config import logger
 from commands.components.ascii import art
 from commands.components.db import Database
 
+db = Database()
+
 async def on_start():
     print(f"{art}")
-    Database().create_table()
+    db.create_table()
 
 async def on_stop():
+    db.close()
     print("Bot stoped")
 
 async def main():

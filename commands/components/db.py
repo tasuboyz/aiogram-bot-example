@@ -74,3 +74,7 @@ class Database():
         self.c.execute(f"DELETE FROM {self.USER_INFO} WHERE {self.user_id} = ?", (user_id,)) 
         self.conn.commit()
         return f"Deleted"
+    
+    def close(self):
+        self.c.close()
+        self.conn.close()
