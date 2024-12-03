@@ -62,8 +62,8 @@ class Admin_Commands:
                     count += 1
                     await self.bot.edit_message_text(chat_id=self.admin_id, text=f"{count}", message_id=counter.message_id)
                 except Exception as e:     
-                    logger.error(f"{e}")         
-                    #logger.error(f"{user_id[0]}, delated \n{e}") 
+                    #logger.error(f"{e}")         
+                    logger.warning(f"{user_id[0]}, delated \n{e}") 
                     id_to_delate.append(user_id[0])
         finally:
             for ids in id_to_delate:
@@ -113,10 +113,10 @@ class Admin_Commands:
                     if count % 100 == 0:
                         await self.bot.edit_message_text(chat_id=self.admin_id, text=f"{count}", message_id=counter.message_id)
                 except Exception as e:             
-                    logger.error(f"{user_id[0]}, delated \n{e}") 
+                    logger.warning(f"{user_id[0]}, delated \n{e}") 
                     id_to_delate.append(user_id[0])
         finally:
             for ids in id_to_delate:
                 Database().delate_ids(ids)      
-            logger.error(f"Completed!")       
+            logger.warning(f"Completed!")       
             await self.bot.edit_message_text(chat_id=self.admin_id, text=f"completed!", message_id=counter.message_id)
