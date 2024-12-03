@@ -1,4 +1,4 @@
-from aiogram.types import Message, CallbackQuery
+from aiogram.types import Message, CallbackQuery, FSInputFile
 import asyncio
 from .components.db import Database
 from .components.chat_keyboards import Keyboard_Manager
@@ -32,9 +32,10 @@ class Admin_Commands:
         try:
             results = self.db.get_all_users()
             self.write_ids(results)
+            ids = FSInputFile("ids.txt")
             count_users = Database().count_users()
             await self.bot.delete_message(chat_id, message_id)
-            await self.bot.send_message(self.admin_id, f"👤 The number of users are {count_users}")  
+            await self.bot.send_document(self.admin_id, document=ids, caption=f"👤 The number of users are {count_users}")  
         except Exception as ex:
             logger.error(f"{ex}", exc_info=True)
             await self.bot.send_message(self.admin_id, f"{user_id}:{ex}")
